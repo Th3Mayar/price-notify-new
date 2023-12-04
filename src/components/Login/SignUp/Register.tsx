@@ -1,11 +1,11 @@
-import {imagenes} from '../../../../config/defaultConfig.ts';
+import { imagenes } from "../../../../config/defaultConfig.ts";
 
 const RegisterPage = () => {
   // Validation form
   const handleSubmit = () => {
-    alert('Si funciona');
-  }
-  
+    alert("Si funciona");
+  };
+
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">
       <div
@@ -46,7 +46,6 @@ const RegisterPage = () => {
                     placeholder="Enter your email"
                     className="w-full px-4 py-3 mt-1 border border-gray-300 rounded-md focus:border-indigo-500 focus:ring focus:ring-indigo-200"
                     style={{ color: "black" }}
-                    
                   />
                 </div>
                 <div>
@@ -62,7 +61,6 @@ const RegisterPage = () => {
                     placeholder="Create a password"
                     className="w-full px-4 py-3 mt-1 border border-gray-300 rounded-md focus:border-indigo-500 focus:ring focus:ring-indigo-200"
                     style={{ color: "black" }}
-                    
                   />
                 </div>
                 <div>
@@ -78,7 +76,6 @@ const RegisterPage = () => {
                     placeholder="Confirm your password"
                     className="w-full px-4 py-3 mt-1 border border-gray-300 rounded-md focus:border-indigo-500 focus:ring focus:ring-indigo-200"
                     style={{ color: "black" }}
-                    
                   />
                 </div>
                 <div>

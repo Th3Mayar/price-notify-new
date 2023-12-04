@@ -3,9 +3,11 @@ import { useState, ChangeEvent } from "react";
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
+  extraProp: boolean; // Define el nombre y tipo de la propiedad adicional
 }
 
-const Modal = ({ isOpen, onClose }: ModalProps) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const Modal = ({ isOpen, onClose, extraProp }: ModalProps) => {
   const [stopPrice, setStopPrice] = useState<string>("");
 
   const handleAccept = () => {
@@ -45,6 +47,6 @@ const Modal = ({ isOpen, onClose }: ModalProps) => {
       )}
     </>
   );
-};
+}
 
 export default Modal;

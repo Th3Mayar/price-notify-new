@@ -1,22 +1,23 @@
 import "./App.css";
+import Home from "./components/Home/home";
 import Dashboard from "./page/dashboard";
-import NavBarOut from "./components/Navbar/navbarOut";
-import Login from "./components/Login/SignIn/Login";
-import Register from "./components/Login/SignUp/Register";
+import NavBar from "./components/Navbar/index";
+import Login from "./page/login";
+import Register from "./page/register";
 import Products from "./page/products";
 import About from './page/about';
 import ConfigProfile from './page/configProfile';
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <NavBarOut />
+        <NavBar />
         <Routes>
           <Route>
             <Route path="/" element={<Dashboard />} />
+            <Route path="/home" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/products" element={<Products />} />

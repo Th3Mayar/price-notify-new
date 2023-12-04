@@ -1,11 +1,13 @@
 import { useState } from "react";
-import DropDown from "./DropDown";
+import DropDown from "../../DropDown";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../../context/userContext";
+import { useContext } from "react";
 
-const Navbar = () => {
+const NavbarConfig = () => {
   const notification = [{ label: " ", href: "/notification" }];
   const [isVisible,setIsVisible] = useState(false)
-
+  const { user } = useContext(UserContext);
   const handleLinkClick = () => {
     setIsVisible(!isVisible);
   };
@@ -27,11 +29,10 @@ const Navbar = () => {
                   <i className="w-5 fas fa-user" />
                   <button
                     onClick={()=>{
-                      console.log("hola")
                     }}
                     className="hover:text-indigo-f"
                   >
-                    Jose F. Henriquez Garcia
+                    {user?.nombre + " " + user?.apellido}
                   </button>
                   {
                     isVisible && <DropDown/>
@@ -59,4 +60,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavbarConfig;

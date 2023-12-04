@@ -97,7 +97,8 @@ const LoginPage = () => {
                       id="email"
                       type="email"
                       placeholder="Enter your email"
-                      className="w-full px-4 py-3 mt-1 border border-gray-300 rounded-md focus:border-indigo-500 focus:ring focus:ring-indigo-200"
+                      className="w-full px-4 py-3 mt-1 border border-gray-300 rounded-md focus:border-indigo-500 focus:ring focus:ring-indigo-200" // Quitamos 'font-bold'
+                      style={{ color: 'black' }} // Agregamos el estilo 'color: black'
                       required
                     />
                   </div>
@@ -113,7 +114,8 @@ const LoginPage = () => {
                       id="password"
                       type="password"
                       placeholder="Enter your password"
-                      className="w-full px-4 py-3 mt-1 border border-gray-300 rounded-md focus:border-indigo-500 focus:ring focus:ring-indigo-200"
+                      className="w-full px-4 py-3 mt-1 border border-gray-300 rounded-md focus:border-indigo-500 focus:ring focus:ring-indigo-200" // Quitamos 'font-bold'
+                      style={{ color: 'black' }} // Agregamos el estilo 'color: black'
                       required
                     />
                   </div>

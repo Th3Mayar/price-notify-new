@@ -4,9 +4,9 @@ import { useContext } from "react";
 
 const DropDown = () => {
   const navigation = [
-    { label: "Edit profile", href: "/", icon: "fas fa-user", onClick: () => {}},
-    { label: "Manage stops", href: "/", icon: "fas fa-list-check", onClick: () => {}},
-    { label: "Privacy Policy", href: "/", icon: "fas file-shield", onClick: () => {}},
+    { label: "Edit profile", href: "/configProfile", icon: "fas fa-user", onClick: () => {}},
+    { label: "Manage stops", href: "/products", icon: "fas fa-list-check", onClick: () => {}},
+    { label: "Privacy Policy", href: "/about", icon: "fas file-shield", onClick: () => {}},
     { label: "Logout", href: "/", icon: "fas fa-right-from-bracket", onClick: () => {
         deleteToken();
     }},

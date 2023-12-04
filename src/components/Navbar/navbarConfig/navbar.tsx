@@ -17,8 +17,8 @@ const NavbarConfig = () => {
       <div>
         <nav
          className="py-4 w-full border-b-2 border-indigo-f text-white">
-          <div className="container mx-auto flex items-left">
-            <Link to="/">
+          <div className="container mx-auto flex items-left ">
+            <Link className="flex items-center space-x-2 text-2xl font-medium text-indigo-500 dark:text-gray-100" to="/">
                 <span>PriceNotify</span>
             </Link>
             <div className="mx-auto flex items-left mr-10 max-w-wd">

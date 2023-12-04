@@ -1,9 +1,11 @@
-import React, { useState } from "react";
-import Modal from './InputSearch/modal';
+import { useState } from "react";
+import Modal from "./InputSearch/modal";
 
-function PriceChecker() {
+export function PriceChecker() {
   const [url, setUrl] = useState("");
   const [priceWithUSD, setPriceWithUSD] = useState("");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [showModal, setShowModal] = useState(false);
 
   const handleCheckPrice = () => {
     if (!url) {
@@ -17,12 +19,12 @@ function PriceChecker() {
         const parser = new DOMParser();
         const doc = parser.parseFromString(html_text, "text/html");
 
-        const priceElement = doc.querySelector("span.ux-textspans");
+        const priceElement = doc.querySelector("span.es--char53--VKKip5c");
 
         if (priceElement) {
           const priceWithUSD = priceElement.textContent;
           setPriceWithUSD("Precio con USD: " + priceWithUSD);
-          console.log(priceElement)
+          console.log(priceElement);
         } else {
           alert("No se encontró un precio en la página.");
         }
@@ -32,7 +34,7 @@ function PriceChecker() {
       });
   };
 
-  const handleInputKeyPress = (event: { key: string; }) => {
+  const handleInputKeyPress = (event: { key: string }) => {
     if (event.key === "Enter") {
       handleCheckPrice();
     }
@@ -40,9 +42,6 @@ function PriceChecker() {
 
   return (
     <>
-    <Modal isOpen={false} onClose={function (): void {
-        throw new Error("Function not implemented.");
-      } }/>
       <input
         type="text"
         className="text-black w-4/5 outline-none py-1 px-2 rounded-l-md"
@@ -51,6 +50,7 @@ function PriceChecker() {
         onChange={(e) => setUrl(e.target.value)}
         onKeyPress={handleInputKeyPress}
       />
+      {showModal && <Modal props />}
       {priceWithUSD && <p>{priceWithUSD}</p>}
     </>
   );

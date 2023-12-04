@@ -55,7 +55,7 @@ const Dashboard = () => {
               Here we present a short and intuitive tutorial on how to use our website designed for users who want an effective way to track the price of specific products on Amazon or other online competitors and receive notifications when a product's price drops to their desired level.
               </p>
               <a
-                href="#"
+                href="https://www.youtube.com/embed/zKlZah1n4os?si=OvDJ84809jk74vfD"
                 className="xl:text-lg my-2 inline-block py-2 px-8 bg-red-500 text-white font-black border-transparent border-4 rounded-3xl hover:bg-white hover:border-black hover:text-black transition duration-200 group"
               >
                 Play video
@@ -89,7 +89,7 @@ const Dashboard = () => {
                   This is a brief tutorial on how to register in the app.
                 </p>
                 <a
-                  href="#"
+                  href="./login"
                   className="xl:text-lg my-2 inline-block py-2 px-8 bg-red-500 text-white font-black border-transparent border-4 rounded-3xl hover:bg-white hover:border-black hover:text-black transition duration-200 group"
                 >
                   Sign Up

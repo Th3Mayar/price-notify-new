@@ -1,5 +1,5 @@
 import PriceChecker from "../PriceChecker.tsx";
-import styles from './InputSearch.css';
+
 
 const InputSearch = () => {
   return (

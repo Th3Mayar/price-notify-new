@@ -6,6 +6,7 @@ import Register from "./components/Login/SignUp/Register";
 import Products from "./page/products";
 import About from './page/about';
 import ConfigProfile from './page/configProfile';
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {

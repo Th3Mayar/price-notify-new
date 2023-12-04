@@ -1,4 +1,5 @@
 import React from "react";
+import {imagenes} from '../../../../config/defaultConfig.ts';
 
 const LoginPage = () => {
   return (
@@ -18,7 +19,7 @@ const LoginPage = () => {
       <div className="flex w-full">
             <div style={{ borderRadius: "10px", overflow: "hidden", flex: 1 }}>
               <img
-                src="/PNLogo.jpg"
+                src={imagenes.logo}
                 alt="Login Image"
                 width={450}
                 height={450}

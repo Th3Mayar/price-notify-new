@@ -1,10 +1,67 @@
-import InputSearch from "../InputSearch/inputSearch";
 import {imagenes} from '../../../config/defaultConfig'
+import Footer from "../../components/footer";
+
 const ProfileUser = () => {
   return (
     <>
-      <InputSearch />
+      <div className="relative" style={{ height: "300px", width: "100%", overflow: "hidden" }}>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div style={{ position: "relative", width: "100%", height: "100%" }}>
+            <img
+              src={imagenes.configProfile}
+              alt="PriceNotify"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                position: "absolute",
+                top: "0",
+                left: "0",
+              }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                display: "flex",
+                alignItems: "center",
+                backgroundColor: "white",
+                padding: "20px 70px",
+                borderRadius: "20px",
+                fontWeight: "bold",
+              }}
+            >
+              <div
+                style={{
+                  width: "50px", 
+                  height: "50px", 
+                  borderRadius: "50%", 
+                  overflow: "hidden", 
+                  marginRight: "20px", 
+                }}
+              >
+                <img
+                  src={imagenes.profilephoto}
+                  alt="Profile"
+                  style={{
+                    width: "100%", 
+                    height: "100%", 
+                    objectFit: "cover", 
+                  }}
+                />
+              </div>
+              <span style={{ color: "black", fontSize: "24px" }}>User Profile</span>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+      
       <div className="flex items-center justify-center" style={{ backgroundColor: "#002E39" }}>
+
         <div
           className="w-3/4 flex items-center justify-center"
           style={{
@@ -14,7 +71,7 @@ const ProfileUser = () => {
             margin: "0 2rem",
             height: "70%",
             width: "60%",
-            marginTop: "0rem",
+            marginTop: "1rem",
             padding: "1rem",
           }}
         >
@@ -173,9 +230,9 @@ const ProfileUser = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };
-
 
 export default ProfileUser;

@@ -1,10 +1,55 @@
+import { FormEventHandler, useEffect } from "react";
 import { imagenes } from "../../../../config/defaultConfig.ts";
+import { gql, useMutation } from "@apollo/client";
+import { useNavigate } from "react-router-dom";
+
+const query = gql`
+mutation NuevoUsuario($input: UsuarioInput) {
+  nuevoUsuario(input: $input) {
+    email
+    id
+    nombre
+  }
+}
+`;
 
 const RegisterPage = () => {
-  // Validation form
-  const handleSubmit = () => {
-    alert("Si funciona");
+  // Validation 
+  const [nuevoUsuario,mutation] = useMutation(query);
+  const navigate = useNavigate();
+  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
+    e.preventDefault();
+    const form = new FormData(e.target as HTMLFormElement);
+    const data = Object.fromEntries(form);
+    const { email, password, confirmpassword } = data;
+
+    if(password!= confirmpassword){
+      alert("Las contraseñas no coinciden")
+      return ;
+    }
+    const newusuario = await nuevoUsuario({
+      variables: {
+        input: {
+          email,
+          password,
+        },
+      },
+    });
+
+    if (newusuario) {
+      alert("Usuario registrado correctamente")
+
+    }
+
+    navigate("/login")
   };
+
+
+useEffect(()=>{
+  if(mutation.error){
+    alert(mutation.error.message)
+  }
+},[mutation])
 
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">
@@ -42,6 +87,7 @@ const RegisterPage = () => {
                   </label>
                   <input
                     id="email"
+                    name="email"
                     type="email"
                     placeholder="Enter your email"
                     className="w-full px-4 py-3 mt-1 border border-gray-300 rounded-md focus:border-indigo-500 focus:ring focus:ring-indigo-200"
@@ -57,6 +103,7 @@ const RegisterPage = () => {
                   </label>
                   <input
                     id="password"
+                    name="password"
                     type="password"
                     placeholder="Create a password"
                     className="w-full px-4 py-3 mt-1 border border-gray-300 rounded-md focus:border-indigo-500 focus:ring focus:ring-indigo-200"
@@ -72,6 +119,7 @@ const RegisterPage = () => {
                   </label>
                   <input
                     id="con-password"
+                    name="confirmpassword"
                     type="password"
                     placeholder="Confirm your password"
                     className="w-full px-4 py-3 mt-1 border border-gray-300 rounded-md focus:border-indigo-500 focus:ring focus:ring-indigo-200"
@@ -83,7 +131,6 @@ const RegisterPage = () => {
                     type="submit"
                     className="w-full px-4 py-3 font-bold text-white bg-indigo-500 rounded-md hover:bg-indigo-600 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700"
                     value="Register"
-                    onClick={handleSubmit}
                   />
                 </div>
               </form>
@@ -113,3 +160,5 @@ const RegisterPage = () => {
 };
 
 export default RegisterPage;
+
+

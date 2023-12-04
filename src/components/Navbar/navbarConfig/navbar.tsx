@@ -32,7 +32,11 @@ const NavbarConfig = () => {
                     }}
                     className="hover:text-indigo-f"
                   >
-                    {user?.nombre + " " + user?.apellido}
+                    {
+                    user?.nombre && user.apellido ? user?.nombre + " " + user?.apellido : "Undefined"
+                    
+                    }
+                    
                   </button>
                   {
                     isVisible && <DropDown/>

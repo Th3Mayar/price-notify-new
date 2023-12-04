@@ -8,6 +8,7 @@ import Products from "./page/products";
 import About from './page/about';
 import ConfigProfile from './page/configProfile';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Footer from "./components/footer"; 
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/configProfile" element={<ConfigProfile />} />
           </Route>
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </>
   );

@@ -1,5 +1,4 @@
 import {imagenes} from '../../../config/defaultConfig'
-import Footer from "../../components/footer";
 
 const ProfileUser = () => {
   return (
@@ -230,7 +229,6 @@ const ProfileUser = () => {
           </div>
         </div>
       </div>
-      <Footer/>
     </>
   );
 };

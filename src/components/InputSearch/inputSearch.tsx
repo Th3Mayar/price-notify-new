@@ -1,4 +1,5 @@
 import PriceChecker from "../PriceChecker.tsx";
+import styles from './InputSearch.css';
 
 const InputSearch = () => {
   return (
@@ -8,9 +9,10 @@ const InputSearch = () => {
           src="https://res.cloudinary.com/dxgdtufe1/image/upload/v1701648498/public/fsyfig5irmvz2gjh7xds.svg"
           alt="PriceNotify"
           style={{
-            width: "100%", 
-            height: "150%", 
-            objectFit: "cover", 
+            width: "100%", // La imagen ocupa el ancho completo
+            height: "150%", // Altura un poco más larga
+            maxHeight: "none", // Eliminar la restricción de altura máxima
+            objectFit: "cover", // La imagen se ajusta para cubrir el contenedor
           }}
         />
       </div>

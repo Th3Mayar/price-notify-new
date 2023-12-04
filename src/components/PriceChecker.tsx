@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Modal from './InputSearch/modal';
 
 function PriceChecker() {
   const [url, setUrl] = useState("");
@@ -39,6 +40,9 @@ function PriceChecker() {
 
   return (
     <>
+    <Modal isOpen={false} onClose={function (): void {
+        throw new Error("Function not implemented.");
+      } }/>
       <input
         type="text"
         className="text-black w-4/5 outline-none py-1 px-2 rounded-l-md"
@@ -49,7 +53,6 @@ function PriceChecker() {
       />
       {priceWithUSD && <p>{priceWithUSD}</p>}
     </>
-
   );
 }
 

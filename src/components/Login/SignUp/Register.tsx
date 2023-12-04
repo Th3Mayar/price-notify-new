@@ -1,3 +1,5 @@
+import {imagenes} from '../../../../config/defaultConfig.ts';
+
 const RegisterPage = () => {
   // Validation form
   const handleSubmit = () => {
@@ -100,7 +102,7 @@ const RegisterPage = () => {
           </div>
           <div style={{ borderRadius: "10px", overflow: "hidden", flex: 1 }}>
             <img
-              src="/PNLogo.jpg"
+              src={imagenes.logo}
               alt="Login Image"
               width={450}
               height={450}

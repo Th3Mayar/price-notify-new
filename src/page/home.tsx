@@ -1,10 +1,11 @@
-import Home from '../components/Home/home'
-import Price from '../components/PriceChecker'
+import Home from "../components/Home/home";
+import Price from "../components/PriceChecker";
+
 const HomePage = () => {
   return (
     <>
-    <Home/>
-    <Price/>
+      <Home />
+      <Price />
     </>
   );
 };

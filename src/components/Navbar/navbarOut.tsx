@@ -6,7 +6,6 @@ const Navbar = () => {
   const navigation = [
     { label: "Home", href: "/" },
     { label: "About Us", href: "/about" },
-    { label: "Company", href: "/company" },
     {
       label: "Blog",
       href: "https://www.youtube.com/channel/UC-20pR6YoAg6XGSjMxuHo4g",

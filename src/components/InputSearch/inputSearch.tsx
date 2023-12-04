@@ -1,13 +1,19 @@
 import PriceChecker from "../PriceChecker.tsx";
-import styles from './InputSearch.css';
 
 const InputSearch = () => {
   return (
-    <div className="relative" style={{ height: "300px", width: "100%" }}>
-      <img
-        src="https://res.cloudinary.com/dxgdtufe1/image/upload/v1701648498/public/fsyfig5irmvz2gjh7xds.svg"
-        alt="PriceNotify"
-      />
+    <div className="relative" style={{ height: "400px", width: "100%", overflow: "hidden" }}>
+      <div className="absolute inset-0 flex items-center justify-center">
+        <img
+          src="https://res.cloudinary.com/dxgdtufe1/image/upload/v1701648498/public/fsyfig5irmvz2gjh7xds.svg"
+          alt="PriceNotify"
+          style={{
+            width: "100%", 
+            height: "150%", 
+            objectFit: "cover", 
+          }}
+        />
+      </div>
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="w-1/2 bg-white p-4 rounded-md border border-black flex items-center">
           <span

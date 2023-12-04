@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: #002E39;
+  color: #fff;
+}
+
+/* Estilos para el contenedor principal */
+
+.registerTitle{
+  margin-top: -350px;
+  color:#fff;
+  font-size: 15pt;
+  margin-left: 50px;
+}
+.registerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color:#000;
+}
+
+/* Estilos para el contenedor de registro */
+.registerForm {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  width: 400px;
+  color:#000;
+}
+
+/* Estilos para la imagen de inicio de sesión */
+.loginImage {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background-color: #007bff;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+
+/* Estilos para los campos de entrada */
+.formControl {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Estilos para el botón de registro */
+.btnPrimary {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Estilos para el texto "Create new account" */
+.createAccountText {
+  margin-top: 20px;
+}
+
+/* Estilos para el nabvar de config */
+.contains {
+  background-color: #002E39;
+  border: 2px solid #fff;
+  width: 225px;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+.iconbar {
+  width: 200px; 
+  padding: 20px;
+}
+
+/* Estilos para los elementos de la lista */
+.iconbar li {
+  list-style: none; /* Ocultar los marcadores de lista */
+  margin: 10px 0; /* Espacio vertical entre elementos */
+}
+
+/* Estilos para los enlaces */
+.iconbar a {
+  text-decoration: none; /* Quitar subrayado de los enlaces */
+  color: white; /* Color de texto por defecto */
+}
+
+/* Estilos para los elementos redondeados */
+.iconbar .rounded-full {
+  border-radius: 50%; /* Forma redonda */
+  text-align: center; /* Alinear el contenido al centro */
+  padding: 10px; /* Espacio interno de los elementos redondeados */
+  cursor: pointer; /* Cambiar el cursor al pasar sobre los elementos */
+}
+
+/* Superponer contenido */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; /* Asegúrate de que la superposición esté en la parte superior */
+}
+
+/* Estilos para los botones "Login" y "Sign Up" */
+
+.btn {
+  display: inline-block;
+  padding: 16px 32px;
+  font-size: 2rem;
+  font-weight: bold;
+  border: 8px solid transparent;
+  border-radius: 3rem;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.btn.login {
+  background-color: #000;
+  color: #fff;
+}
+
+.btn.signup {
+  background-color: #ff0000;
+  color: #fff;
+}
+
+.btn:hover {
+  background-color: #fff;
+  border-color: #ccc;
+  color: #000;
+}
+
+.cover {
+  background-color: #000;
+  overflow: hidden;
+}
+
+.content {
+  position: relative;
+}
+
+/* Estilos para el segundo botón "Play video" */
+.play-video {
+  padding: 2rem 4rem;
+}
+
+/* Estilos para la sección "PriceNotify" */
+.right {
+  color: #fff;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 2rem;
+  overflow: hidden;
+  width: 85%;
+  max-width: 1100px;
+  margin: 16px auto;
+}
+
+/* Estilos para el texto de la descripción */
+.description {
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* Estilos para el tercer botón "Sign Up" */
+.signup-button {
+  padding: 2rem 4rem;
+}
+

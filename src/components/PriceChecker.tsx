@@ -1,39 +1,58 @@
-import { FormEventHandler, useEffect, useState } from "react";
+import { FormEventHandler, useEffect, useState, useContext } from "react";
 import Modal from "./InputSearch/modal";
-
+import { Producto } from "../types/userType";
+import { gql, useMutation } from "@apollo/client";
+import { UserContext } from "../context/userContext";
+//FindOne
 type ModalValueType = number | string | null;
+
+const query = gql`
+  mutation NuevoProducto($input: ProductoInput) {
+    nuevoProducto(input: $input) {
+      nombre
+      createdAt
+      descripcion
+      id
+      precio
+      precioStop
+      updatedAt
+      url
+      images
+    }
+  }
+`;
 
 export function PriceChecker() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [priceWithUSD, setPriceWithUSD] = useState("");
+  const [nuevoProducto, mutation] = useMutation(query);
   const [modalValue, setModalValue] = useState<ModalValueType>(null);
   const [showModal, setShowModal] = useState(false);
+  const [product, setProduct] = useState<Producto | null>(null);
+  const { token, user, setUser } = useContext(UserContext);
 
-  const GetProductByUrl = (url: string) => {
+  useEffect(() => {
+    if (mutation.error) {
+      alert(mutation.error.message);
+    }
+  }, [mutation]);
+
+  const GetProductByUrl = async (url: string) => {
     if (!url) {
       alert("No has ingresado una URL.");
       return;
     }
 
-    fetch(url)
-      .then((response) => response.text())
-      .then((html_text) => {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html_text, "text/html");
-
-        const priceElement = doc.querySelector("span.es--char53--VKKip5c");
-
-        if (priceElement) {
-          const priceWithUSD = priceElement.textContent;
-          setPriceWithUSD("Precio con USD: " + priceWithUSD);
-          console.log(priceElement);
-        } else {
-          alert("No se encontró un precio en la página.");
-        }
-      })
-      .catch((error) => {
-        alert("Ha ocurrido un error al obtener la página: " + error);
-      });
+    const result = await fetch("http://localhost:5000/scrapping", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ url }),
+    });
+    const data = await result.json();
+    setProduct({ ...data, url });
+    console.log(data);
   };
 
   const handleInputSubmit: FormEventHandler<HTMLFormElement> = (e) => {
@@ -49,12 +68,33 @@ export function PriceChecker() {
     setShowModal(!showModal);
   };
   useEffect(() => {
-    if (modalValue) {
-      //Agregar producto a la lista de productos.
-      console.log(modalValue);
+    if (modalValue && product) {
+      console.log("Product:", product);
+      console.log("Token:", token);
+      nuevoProducto({
+        variables: {
+          input: {
+            ...product,
+            precioStop: +modalValue,
+          },
+        },
+        context: {
+          headers: {
+            Authorization: token,
+          },
+        },
+      }).then((data) => {
+        console.log("Response:", data);
+        const newsProducts = user?.productos;
+        newsProducts?.push(data.data.nuevoProducto);
+        setUser({
+          ...user,
+          productos: newsProducts,
+        });
+      });
     }
-    console.log(modalValue);
-  }, [modalValue]);
+  }, [modalValue, product, token]);
+
   return (
     <>
       <form onSubmit={handleInputSubmit} className="flex w-[100%] items-center">

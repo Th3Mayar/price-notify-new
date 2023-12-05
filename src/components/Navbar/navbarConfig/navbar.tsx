@@ -34,7 +34,6 @@ const NavbarConfig = () => {
                   >
                     {
                     user?.nombre && user.apellido ? user?.nombre + " " + user?.apellido : "Undefined"
-                    
                     }
                     
                   </button>

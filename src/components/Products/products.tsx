@@ -1,4 +1,4 @@
-import {imagenes} from '../../../config/defaultConfig';
+import { imagenes } from '../../../config/defaultConfig';
 import React from 'react';
 import { Producto } from '../../types/userType';
 
@@ -7,7 +7,7 @@ interface Props {
 }
 
 const Products: React.FC<Props> = ({ product }) => {
-  console.log(product)
+  console.log(product);
   return (
     <>
       <main className="py-8 px-4">
@@ -15,50 +15,59 @@ const Products: React.FC<Props> = ({ product }) => {
           <h2 className="text-2xl font-semibold ml-20 mb-4">
             {product.nombre}
           </h2>
-          <div className="flex items-center justify-center space-x-4">
-            <div className="flex space-x-">
-              { 
-              product.images.length > 0 ? product.images.map((img,index)=>{
-                if(index>2){
-                  return <></>
-                }
+          <div className="flex justify-center gap-10">
+            <div className="flex space-x-6 border-b-2 pb-4 flex-1 content-center items-center">
+              {product.images.length > 0 ? (
+                product.images.map((img, index) => {
+                  if (index > 2) {
+                    return null;
+                  }
                   return (
-                    <img
-                      src={img}
-                      alt={product.nombre}
-                      width={200}
-                      height={150}
-                     />
-                  )
-                }):(
-                  <>
+                    <div key={index} className="flex items-center">
+                      <img
+                        src={img}
+                        alt={product.nombre}
+                        width={200}
+                        height={150}
+                        className="mr-4"
+                      />
+                      {index < 2 && <div className="border-r-2 h-24"></div>}
+                    </div>
+                  );
+                })
+              ) : (
+                <>
                   <img
                     src={imagenes.logo}
                     alt="Imagen 1"
                     width={200}
                     height={150}
+                    className="mr-4"
                   />
+                  <div className="border-r-2 h-24"></div>
                   <img
                     src={imagenes.logo}
                     alt="Imagen 1"
                     width={200}
                     height={150}
+                    className="mr-4"
                   />
+                  <div className="border-r-2 h-24"></div>
                   <img
                     src={imagenes.logo}
                     alt="Imagen 1"
                     width={200}
                     height={150}
+                    className="mr-4"
                   />
-                  </>
-                )
-              }
+                </>
+              )}
             </div>
-            <div className="w-1/2 mb-2">
+            <div className="w-1/2 mb-2 flex-1 flex flex-col">
               <h2 className="text-2xl font-semibold mb-5">
                 Sobre este artículo:
               </h2>
-              <h4 className="text-lg mb-5">
+              <h4 className="text-lg mb-5 flex-1">
                 {product.descripcion}
               </h4>
               <div className="flex space-x-4">
@@ -88,3 +97,4 @@ const Products: React.FC<Props> = ({ product }) => {
 };
 
 export default Products;
+

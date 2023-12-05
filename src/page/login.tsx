@@ -8,7 +8,7 @@ export default function LoginPage() {
   const { user } = useContext(UserContext);
   useEffect(() => {
     if (user) {
-      navigate("/home");
+      navigate("/");
     }
   }, [user, navigate]);
   console.log(user);

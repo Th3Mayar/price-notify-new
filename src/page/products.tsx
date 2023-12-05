@@ -6,14 +6,15 @@ const ProductsPage = () => {
   const {user}=useContext(UserContext)
   console.log(user)
   return (
-    <>
+    <div className="flex flex-col-reverse">
+    
       {
-        user && user.productos.map((product)=>{
+        user && user.productos && user.productos.map((product)=>{
           
           return <Products product={product} key={product.id}/>
         })
       }
-    </>
+    </div>
   );
 };
 

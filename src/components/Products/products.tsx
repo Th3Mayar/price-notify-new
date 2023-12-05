@@ -18,7 +18,10 @@ const Products: React.FC<Props> = ({ product }) => {
           <div className="flex items-center justify-center space-x-4">
             <div className="flex space-x-">
               { 
-              product.images.length > 0 ? product.images.map((img)=>{
+              product.images.length > 0 ? product.images.map((img,index)=>{
+                if(index>2){
+                  return <></>
+                }
                   return (
                     <img
                       src={img}

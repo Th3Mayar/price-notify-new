@@ -1,21 +1,23 @@
 import { SetStateAction, Dispatch, FormEventHandler } from "react";
 import "./modal.css";
 import { imagenes } from "../../../config/defaultConfig";
+import { Producto } from "../../types/userType";
 
 type ModalProps = {
   title: string;
+  producto: Producto | null;
   onClose: () => void;
   setState: Dispatch<SetStateAction<null | number | string>>;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const Modal: React.FC<ModalProps> = ({ title, onClose, setState }) => {
+const Modal: React.FC<ModalProps> = ({ title, onClose, setState, producto}) => {
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     const form = new FormData(e.target as HTMLFormElement);
     const data = Object.fromEntries(form);
     const priceStop = data["priceStop"] as string;
-    console.log(priceStop);
+  
     setState(priceStop);
     onClose();
   };
@@ -43,9 +45,10 @@ const Modal: React.FC<ModalProps> = ({ title, onClose, setState }) => {
                 Cancel
               </button>
             </div>
+            <h5>{producto?.nombre}</h5>
           </div>
           <div className="flex w-[100%]">
-            <img src={imagenes.logo}/>
+            <img src={producto?.images[0] || imagenes.logo}/>
           </div>
         </form>
       </div>

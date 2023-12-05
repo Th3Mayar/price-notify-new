@@ -19,5 +19,5 @@ export type Producto = {
   precio?: number;
   precioStop?: number;
   url?: string;
-  images?: [string];
+  images: [string];
 }

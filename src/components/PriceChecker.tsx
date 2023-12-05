@@ -52,14 +52,32 @@ export function PriceChecker() {
     });
     const data = await result.json();
     setProduct({ ...data, url });
-    console.log(data);
   };
 
   const handleInputSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
+
+    if (!user) {
+      alert("Debes estar logueado para poder insertar URLS");
+      return;
+    }
+
     const form = new FormData(e.target as HTMLFormElement);
     const data = Object.fromEntries(form);
     const search = data["search"] as string;
+
+    if (search.length < 10) {
+      alert("Debes ingresar una url válida");
+      return;
+    }
+
+    const ebayUrlPatternUs = /^https?:\/\/(www\.)?ebay\.com\/.*$/;
+    const ebayUrlPatternEs = /^https?:\/\/(www\.)?ebay\.es\/.*$/;
+
+    if (!ebayUrlPatternUs.test(search) && !ebayUrlPatternEs.test(search)) {
+      alert("Debes ingresar una URL válida de eBay");
+      return;
+    }
 
     //Buscar producto mediante la url
     GetProductByUrl(search);
@@ -69,8 +87,6 @@ export function PriceChecker() {
   };
   useEffect(() => {
     if (modalValue && product) {
-      console.log("Product:", product);
-      console.log("Token:", token);
       nuevoProducto({
         variables: {
           input: {
@@ -124,6 +140,7 @@ export function PriceChecker() {
         <Modal
           title="Modal"
           setState={setModalValue}
+          producto = {product}
           onClose={() => {
             setShowModal(false);
           }}

@@ -47,13 +47,25 @@ const Modal: React.FC<ModalProps> = ({ title, onClose, setState, producto}) => {
             </div>
             <h5>{producto?.nombre}</h5>
           </div>
-          <div className="flex w-[100%]">
-            <img src={producto?.images[0] || imagenes.logo}/>
-          </div>
+          <div className="flex w-[100%] justify-end mt-4 pr-4" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+  <img
+    src={producto?.images[0] || imagenes.logo}
+    style={{
+      width: '200px', 
+      height: '200px', 
+      objectFit: 'cover', 
+      borderRadius: '8px', 
+      marginRight: '-30px' 
+    }}
+    alt="Product"
+  />
+</div>
         </form>
       </div>
     </>
   );
+  
+  
 };
 
 export default Modal;

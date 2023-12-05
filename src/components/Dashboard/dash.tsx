@@ -1,4 +1,3 @@
-import Footer from "../footer";
 import InputSearch from "../InputSearch/inputSearch";
 
 const Dashboard = () => {
@@ -99,7 +98,6 @@ const Dashboard = () => {
           </div>
         </div>
       </section>
-      <Footer />
     </>
   );
 };

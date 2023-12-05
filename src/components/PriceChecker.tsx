@@ -3,7 +3,7 @@ import Modal from "./InputSearch/modal";
 import { Producto } from "../types/userType";
 import { gql, useMutation } from "@apollo/client";
 import { UserContext } from "../context/userContext";
-//FindOne
+
 type ModalValueType = number | string | null;
 
 const query = gql`

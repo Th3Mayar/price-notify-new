@@ -1,6 +1,5 @@
 import "./App.css";
-import Home from "./components/Home/home";
-import Dashboard from "./page/dashboard";
+import Content from './page/content';
 import NavBar from "./components/Navbar/index";
 import Login from "./page/login";
 import Register from "./page/register";
@@ -17,8 +16,7 @@ function App() {
         <NavBar />
         <Routes>
           <Route>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/home" element={<Home />} />
+            <Route path="/" element={<Content />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/products" element={<Products />} />

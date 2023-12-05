@@ -8,32 +8,24 @@ export function PriceChecker() {
   const [priceWithUSD, setPriceWithUSD] = useState("");
   const [modalValue, setModalValue] = useState<ModalValueType>(null);
   const [showModal, setShowModal] = useState(false);
+  const [product, setProduct] = useState<ProductType>(null);
 
-  const GetProductByUrl = (url: string) => {
+  const GetProductByUrl = async (url: string) => {
     if (!url) {
       alert("No has ingresado una URL.");
       return;
     }
 
-    fetch(url)
-      .then((response) => response.text())
-      .then((html_text) => {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html_text, "text/html");
-
-        const priceElement = doc.querySelector("span.es--char53--VKKip5c");
-
-        if (priceElement) {
-          const priceWithUSD = priceElement.textContent;
-          setPriceWithUSD("Precio con USD: " + priceWithUSD);
-          console.log(priceElement);
-        } else {
-          alert("No se encontró un precio en la página.");
-        }
-      })
-      .catch((error) => {
-        alert("Ha ocurrido un error al obtener la página: " + error);
-      });
+    const result = await fetch("http://localhost:5000/scrapping", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ url }),
+    });
+    const data = await result.json();
+    setProduct(data);
+    console.log(data);
   };
 
   const handleInputSubmit: FormEventHandler<HTMLFormElement> = (e) => {
@@ -52,8 +44,13 @@ export function PriceChecker() {
     if (modalValue) {
       //Agregar producto a la lista de productos.
       console.log(modalValue);
+      setProduct({
+        precioStop: modalValue,
+        ...product
+      })
     }
     console.log(modalValue);
+    
   }, [modalValue]);
   return (
     <>

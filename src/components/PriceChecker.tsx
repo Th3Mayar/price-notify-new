@@ -1,14 +1,41 @@
-import { FormEventHandler, useEffect, useState } from "react";
+import { FormEventHandler, useEffect, useState, useContext } from "react";
 import Modal from "./InputSearch/modal";
+import { Producto } from "../types/userType";
+import { gql, useMutation } from "@apollo/client";
+import { UserContext } from "../context/userContext";
 
 type ModalValueType = number | string | null;
+
+const query = gql`
+  mutation NuevoProducto($input: ProductoInput) {
+    nuevoProducto(input: $input) {
+      nombre
+      createdAt
+      descripcion
+      id
+      precio
+      precioStop
+      updatedAt
+      url
+      images
+    }
+  }
+`;
 
 export function PriceChecker() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [priceWithUSD, setPriceWithUSD] = useState("");
+  const [nuevoProducto, mutation] = useMutation(query);
   const [modalValue, setModalValue] = useState<ModalValueType>(null);
   const [showModal, setShowModal] = useState(false);
-  const [product, setProduct] = useState<ProductType>(null);
+  const [product, setProduct] = useState<Producto | null>(null);
+  const { token, user, setUser } = useContext(UserContext);
+
+  useEffect(() => {
+    if (mutation.error) {
+      alert(mutation.error.message);
+    }
+  }, [mutation]);
 
   const GetProductByUrl = async (url: string) => {
     if (!url) {
@@ -24,7 +51,7 @@ export function PriceChecker() {
       body: JSON.stringify({ url }),
     });
     const data = await result.json();
-    setProduct(data);
+    setProduct({ ...data, url });
     console.log(data);
   };
 
@@ -41,17 +68,33 @@ export function PriceChecker() {
     setShowModal(!showModal);
   };
   useEffect(() => {
-    if (modalValue) {
-      //Agregar producto a la lista de productos.
-      console.log(modalValue);
-      setProduct({
-        precioStop: modalValue,
-        ...product
-      })
+    if (modalValue && product) {
+      console.log("Product:", product);
+      console.log("Token:", token);
+      nuevoProducto({
+        variables: {
+          input: {
+            ...product,
+            precioStop: +modalValue,
+          },
+        },
+        context: {
+          headers: {
+            Authorization: token,
+          },
+        },
+      }).then((data) => {
+        console.log("Response:", data);
+        const newsProducts = user?.productos;
+        newsProducts?.push(data.data.nuevoProducto);
+        setUser({
+          ...user,
+          productos: newsProducts,
+        });
+      });
     }
-    console.log(modalValue);
-    
-  }, [modalValue]);
+  }, [modalValue, product, token]);
+
   return (
     <>
       <form onSubmit={handleInputSubmit} className="flex w-[100%] items-center">

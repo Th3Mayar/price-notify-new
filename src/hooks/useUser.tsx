@@ -15,6 +15,14 @@ const query = gql`
       gender
       phone
       address
+      productos{
+        id
+        nombre
+        precio
+        precioStop
+        images
+        descripcion
+      }
     }
   }
 `;

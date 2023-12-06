@@ -6,13 +6,13 @@ import Register from "./page/register";
 import Products from "./page/products";
 import About from './page/about';
 import ConfigProfile from './page/configProfile';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Footer from "./components/footer"; 
 
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <NavBar />
         <Routes>
           <Route>
@@ -25,7 +25,7 @@ function App() {
           </Route>
         </Routes>
         <Footer/>
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 }

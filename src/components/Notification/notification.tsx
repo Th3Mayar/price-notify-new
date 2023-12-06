@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./notification.css";
 import Element from "./elementNotification";
 import { UserContext } from "../../context/userContext";
@@ -30,6 +30,7 @@ const query = gql`
 
 const Notifications = () => {
   const { token } = useContext(UserContext);
+  const [notification, setNotification] = useState<Notification[] | null>(null);
   const { data } = useQuery(query, {
     context: {
       headers: {
@@ -37,6 +38,11 @@ const Notifications = () => {
       },
     },
   });
+  useEffect(() =>{
+    if(data && data.obtenerNotificaciones){
+      setNotification(data.obtenerNotificaciones);
+    }
+  },[data])
 
   return (
     <section className="absolute top-[100%] translate-y-[10px] z-[999] flex right-[-10px] w-[500px] overflow-hidden">
@@ -53,8 +59,8 @@ const Notifications = () => {
             </li>
             <li className="text-white py-2 px-6">
               <ul className="flex flex-col w-[100%]">
-                {data?.obtenerNotificaciones &&
-                  data?.obtenerNotificaciones.map((element: Notification) => {
+                {notification &&
+                  notification.map((element: Notification) => {
                     const { producto } = element;
                     if (!producto) return null;
                     return <Element key={producto.id} element={producto} date = {element.createdAt} />;

@@ -7,7 +7,7 @@ export type UserType = {
   gender?: string;
   phone?: string;
   address?: string;
-  productos?: [Producto];
+  productos?: Producto[];
 };
 
 export type Token = string | null;

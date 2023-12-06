@@ -1,12 +1,39 @@
 import { imagenes } from '../../../config/defaultConfig';
 import React from 'react';
 import { Producto } from '../../types/userType';
+import { useMutation,gql } from '@apollo/client';
+import { UserContext } from '../../context/userContext';
+import { useContext } from 'react'; 
+
+const query= gql`
+mutation EliminarProducto($id: ID!) {
+  eliminarProducto(id: $id)
+}
+`
 
 interface Props {
   product: Producto;
 }
 
 const Products: React.FC<Props> = ({ product }) => {
+  const [eliminarProducto,mutation]=useMutation(query)
+  const {user,setUser} = useContext(UserContext)
+  async function borrar (){
+    await eliminarProducto({
+      variables:{
+        id: product.id
+      }
+    })
+    const productos = user?.productos?.filter((producto)=>{
+      return producto.id != product.id
+    })
+    if(productos && productos.length > 0){
+      setUser({
+        ...user,
+        productos
+      })
+    }
+  }
   return (
     <>
       <main className="py-8 px-4 ">
@@ -95,6 +122,7 @@ const Products: React.FC<Props> = ({ product }) => {
                   ㅤㅤ
                   </h2>
                   <button
+                  onClick={borrar}
                     className="bg-red-500 text-white px-10 py-2 rounded"
                   >
                     Eliminar

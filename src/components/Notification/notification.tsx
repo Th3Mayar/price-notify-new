@@ -2,9 +2,42 @@ import React, { useContext } from "react";
 import "./notification.css";
 import Element from "./elementNotification";
 import { UserContext } from "../../context/userContext";
+import { useQuery, gql } from "@apollo/client";
+import { Producto } from "../../types/userType";
+
+type Notification = {
+  mensaje: string;
+  producto: Producto;
+  createdAt: string;
+  updatedAt: string;
+};
+
+const query = gql`
+  query ObtenerNotificaciones {
+    obtenerNotificaciones {
+      mensaje
+      producto {
+        id
+        nombre
+        precio
+        precioStop
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
 
 const Notifications = () => {
-  const {user} = useContext(UserContext);
+  const { token } = useContext(UserContext);
+  const { data } = useQuery(query, {
+    context: {
+      headers: {
+        Authorization: token,
+      },
+    },
+  });
+
   return (
     <section className="absolute top-[100%] translate-y-[10px] z-[999] flex right-[-10px] w-[500px] overflow-hidden">
       <nav className="contains overflow-hidden flex w-[100%]">
@@ -20,9 +53,11 @@ const Notifications = () => {
             </li>
             <li className="text-white py-2 px-6">
               <ul className="flex flex-col w-[100%]">
-                {user?.productos &&
-                  user.productos.map((element) => {
-                    return <Element key={element.id} element={element} />;
+                {data?.obtenerNotificaciones &&
+                  data?.obtenerNotificaciones.map((element: Notification) => {
+                    const { producto } = element;
+                    if (!producto) return null;
+                    return <Element key={producto.id} element={producto} date = {element.createdAt} />;
                   })}
               </ul>
             </li>

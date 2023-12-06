@@ -56,7 +56,7 @@ export function PriceChecker() {
 
   const handleInputSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-
+    
     if (!user) {
       alert("Debes estar logueado para poder insertar URLS");
       return;
@@ -82,11 +82,12 @@ export function PriceChecker() {
     //Buscar producto mediante la url
     GetProductByUrl(search);
 
-    //Abrir modal para mostrar el resultado del busqueda
+    //Abrir modal para mostrar el resultado del busqueda jk
     setShowModal(!showModal);
   };
   useEffect(() => {
     if (modalValue && product) {
+      console.log(product);
       nuevoProducto({
         variables: {
           input: {
@@ -107,6 +108,7 @@ export function PriceChecker() {
           ...user,
           productos: newsProducts,
         });
+        setModalValue(null);
       });
     }
   }, [modalValue, product, token]);

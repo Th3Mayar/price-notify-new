@@ -19,7 +19,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (mutation.error) {
-      console.log(mutation.error.message);
+      alert(mutation.error.message);
     }
   }, [mutation]);
 

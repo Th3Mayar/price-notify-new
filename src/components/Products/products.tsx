@@ -7,7 +7,6 @@ interface Props {
 }
 
 const Products: React.FC<Props> = ({ product }) => {
-  console.log(product);
   return (
     <>
       <main className="py-8 px-4">
@@ -65,7 +64,7 @@ const Products: React.FC<Props> = ({ product }) => {
             </div>
             <div className="w-1/2 mb-2 flex-1 flex flex-col">
               <h2 className="text-2xl font-semibold mb-5">
-                Sobre este artículo:
+                Sobre este envío del artículo:
               </h2>
               <h4 className="text-lg mb-5 flex-1">
                 {product.descripcion}

@@ -1,0 +1,25 @@
+/* notification.css */
+
+.scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
+    max-width: 500px; /* Ancho aumentado */
+    overflow-y: scroll; /* Establecer el scroll */
+  }
+  
+  .scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px; /* Reducir la altura del scrollbar */
+    right: 0; /* Alinea el scrollbar a la derecha */
+  }
+  
+  .scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 3px; /* Borde redondeado */
+  }
+  
+  /* Cambia el color del scrollbar cuando está enfocado */
+  .scrollbar:focus-within::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+  

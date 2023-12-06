@@ -31,6 +31,7 @@ const Modal: React.FC<ModalProps> = ({ title, onClose, setState, producto}) => {
               <i className="fas fa-times"></i>
             </span>
             <h2 className="titleModal">What will be your stop price?</h2>
+            <span>Price now: {producto?.precio}</span>
             <input
               name="priceStop"
               type="text"

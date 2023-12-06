@@ -1,7 +1,7 @@
 import { FormEventHandler, useEffect } from "react";
 import { imagenes } from "../../../../config/defaultConfig.ts";
 import { gql, useMutation } from "@apollo/client";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const query = gql`
   mutation NuevoUsuario($input: UsuarioInput) {
@@ -166,9 +166,9 @@ const RegisterPage = () => {
                   />
                   <p className="text-gray-600 mb-4">
                     Do you already have an account?{" "}
-                    <a href="/login" className="text-black font-bold underline">
+                    <Link to="/login" className="text-black font-bold underline">
                       Sign in
-                    </a>
+                    </Link>
                   </p>
                 </div>
               </form>

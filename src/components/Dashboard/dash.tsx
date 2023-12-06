@@ -1,4 +1,5 @@
 import InputSearch from "../InputSearch/inputSearch";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   return (
@@ -20,18 +21,18 @@ const Dashboard = () => {
           </p>
         </div>
         <div className="text-center flex gap-3 justify-center bg-white bg-opacity-10" style={{ backgroundColor: "#002E39" }}>
-  <a
-    href="./login"
+  <Link
+    to="/login"
     className="xl:text-lg my-2 inline-block py-2 px-8 bg-black text-white font-black border-transparent border-4 rounded-3xl hover:bg-white hover:border-black hover:text-black transition duration-200 group"
   >
     Login In
-  </a>
-  <a
-    href="./register"
+  </Link>
+  <Link
+    to="/register"
     className="xl:text-lg my-2 inline-block py-2 px-8 bg-red-500 text-white font-black border-transparent border-4 rounded-3xl hover:bg-white hover:border-black hover:text-black transition duration-200 group"
   >
     Sign Up
-  </a>
+  </Link>
 </div>
       </section>
       <section className="mb-10">
@@ -87,12 +88,12 @@ const Dashboard = () => {
                 <p className="text-lg">
                   This is a brief tutorial on how to register in the app.
                 </p>
-                <a
-                  href="./login"
+                <Link
+                  to="/login"
                   className="xl:text-lg my-2 inline-block py-2 px-8 bg-red-500 text-white font-black border-transparent border-4 rounded-3xl hover:bg-white hover:border-black hover:text-black transition duration-200 group"
                 >
                   Sign Up
-                </a>
+                </Link>
               </div>
             </div>
           </div>

@@ -2,6 +2,7 @@ import { FormEventHandler, useContext, useEffect } from "react";
 import { imagenes } from "../../../../config/defaultConfig.ts";
 import { gql, useMutation } from "@apollo/client";
 import { UserContext } from "../../../context/userContext.tsx";
+import { Link } from "react-router-dom";
 
 const query = gql`
   mutation AutenticarUsuario($input: AutenticarInput) {
@@ -22,8 +23,6 @@ const LoginPage = () => {
       alert(mutation.error.message);
     }
   }, [mutation]);
-
-  console.log(mutation);
   
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
@@ -131,12 +130,12 @@ const LoginPage = () => {
                 <div className="text-center">
                   <p className="text-gray-600">
                     You do not have an account?{" "}
-                    <a
-                      href="/register"
+                    <Link
+                      to="/register"
                       className="text-black font-bold underline"
                     >
                       Sign up
-                    </a>
+                    </Link>
                   </p>
                 </div>
               </div>

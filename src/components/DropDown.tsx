@@ -26,8 +26,8 @@ const DropDown = () => {
                   onClick={item.onClick}
                 >
                   <i className={`w-5 ${item.icon}`}/>{" "}
-                  <Link to={item.href}>
-                    <a className="text-white hover:text-indigo-f">{item.label}</a>
+                  <Link to={item.href} className="text-white hover:text-indigo-f">
+                    {item.label}
                   </Link>
                 </li>
                 {index !== navigation.length - 1 && <hr />}

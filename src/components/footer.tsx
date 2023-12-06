@@ -30,12 +30,12 @@ export default function Footer() {
             </div>
 
             <div className="mt-5">
-              <a
-                href="/"
+              <Link
+                to="/"
                 target="_blank"
                 rel="noopener"
                 className="relative block w-44">
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -94,19 +94,19 @@ export default function Footer() {
 
         <div className="my-10 text-sm text-center text-gray-600 dark:text-gray-400">
           Copyright © {new Date().getFullYear()}. Made with @Codesys{" "}
-          <a
-            href="/"
+          <Link
+            to="/"
             target="_blank"
             rel="noopener">
             software company.
-          </a>{" "}
+          </Link>{" "}
           Illustrations from{" "}
-          <a
-            href="/"
+          <Link
+            to="/"
             target="_blank"
             rel="noopener ">
             Codesys
-          </a>
+          </Link>
         </div>
       </div>
       {/* Do not remove this */}

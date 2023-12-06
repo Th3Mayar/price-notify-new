@@ -9,12 +9,12 @@ interface Props {
 const Products: React.FC<Props> = ({ product }) => {
   return (
     <>
-      <main className="py-8 px-4">
+      <main className="py-8 px-4 ">
         <section className="container mx-auto">
           <h2 className="text-2xl font-semibold ml-20 mb-4">
             {product.nombre}
           </h2>
-          <div className="flex justify-center gap-10">
+          <div className="flex justify-center gap-10 ">
             <div className="flex space-x-6 border-b-2 pb-4 flex-1 content-center items-center">
               {product.images.length > 0 ? (
                 product.images.map((img, index) => {
@@ -22,7 +22,7 @@ const Products: React.FC<Props> = ({ product }) => {
                     return null;
                   }
                   return (
-                    <div key={index} className="flex items-center">
+                    <div key={index} className="flex items-center ">
                       <img
                         src={img}
                         alt={product.nombre}
@@ -71,10 +71,14 @@ const Products: React.FC<Props> = ({ product }) => {
               </h4>
               <div className="flex space-x-4">
                 <div>
-                  <h2 className="text-2xl font-semibold mb-2">
+                  <h2 className="text-2xl font-semibold mb-2"
+                  >
                     Precio actual:
                   </h2>
-                  <button className="bg-red-500 text-white px-10 py-2 rounded">
+                  <button className="bg-red-500 text-white px-10 py-2 rounded"
+                  style={{
+                    backgroundImage: 'linear-gradient(to right, #a85128, #fedeba)',
+                  }}>
                     $USD {product.precio}
                   </button>
                 </div>
@@ -86,13 +90,24 @@ const Products: React.FC<Props> = ({ product }) => {
                     $USD {product.precioStop}
                   </button>
                 </div>
+                <div>
+                  <h2 className="text-2xl font-semibold mb-2 text-center">
+                  ㅤㅤ
+                  </h2>
+                  <button
+                    className="bg-red-500 text-white px-10 py-2 rounded"
+                  >
+                    Eliminar
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </section>
-      </main>
-    </>
-  );
+      </section>
+    </main>
+  </>
+);
+  
 };
 
 export default Products;

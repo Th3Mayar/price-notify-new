@@ -42,7 +42,7 @@ const Dashboard = () => {
               <iframe
                 width="900"
                 height="360"
-                src="https://1drv.ms/v/s!AnvlGUHrX5OyhCq40P42BZEvxiph?e=TbyLp1"
+                src="https://1drv.ms/v/s!AnvlGUHrX5OyhCvP4Hx_AiPmW1OP?e=8m5cWh"
                 title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               ></iframe>
@@ -55,7 +55,7 @@ const Dashboard = () => {
               Here we present a short and intuitive tutorial on how to use our website designed for users who want an effective way to track the price of specific products on Amazon or other online competitors and receive notifications when a product's price drops to their desired level.
               </p>
               <a
-                href="https://1drv.ms/v/s!AnvlGUHrX5OyhCq40P42BZEvxiph?e=TbyLp1"
+                href="https://1drv.ms/v/s!AnvlGUHrX5OyhCvP4Hx_AiPmW1OP?e=8m5cWh"
                 className="xl:text-lg my-2 inline-block py-2 px-8 bg-red-500 text-white font-black border-transparent border-4 rounded-3xl hover:bg-white hover:border-black hover:text-black transition duration-200 group"
               >
                 Play video

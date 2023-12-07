@@ -43,7 +43,7 @@ export function PriceChecker() {
       return;
     }
 
-    const result = await fetch("http://localhost:5000/scrapping", {
+    const result = await fetch("https://api-price-notify-consult-price.onrender.com/scrapping", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

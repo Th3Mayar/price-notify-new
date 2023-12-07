@@ -3,7 +3,7 @@ import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client'
 const client = new ApolloClient({
     cache: new InMemoryCache(),
     link: new HttpLink({
-        uri: 'http://localhost:4000',
+        uri: 'https://api-price-notify.onrender.com',
         fetch
     })
 })

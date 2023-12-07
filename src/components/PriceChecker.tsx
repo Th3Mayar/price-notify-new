@@ -24,7 +24,7 @@ const query = gql`
 
 export function PriceChecker() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [priceWithUSD, setPriceWithUSD] = useState("");
+  const [priceWithUSD] = useState("");
   const [nuevoProducto, mutation] = useMutation(query);
   const [modalValue, setModalValue] = useState<ModalValueType>(null);
   const [showModal, setShowModal] = useState(false);

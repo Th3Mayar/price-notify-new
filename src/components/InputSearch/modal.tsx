@@ -11,7 +11,7 @@ type ModalProps = {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const Modal: React.FC<ModalProps> = ({ title, onClose, setState, producto}) => {
+const Modal: React.FC<ModalProps> = ({onClose, setState, producto}) => {
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     const form = new FormData(e.target as HTMLFormElement);

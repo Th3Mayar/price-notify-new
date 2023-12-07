@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./notification.css";
 import Element from "./elementNotification";
 import { UserContext } from "../../context/userContext";

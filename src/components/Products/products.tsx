@@ -16,7 +16,7 @@ interface Props {
 }
 
 const Products: React.FC<Props> = ({ product }) => {
-  const [eliminarProducto,mutation]=useMutation(query)
+  const [eliminarProducto] = useMutation(query)
   const {user,setUser} = useContext(UserContext)
   async function borrar (){
     await eliminarProducto({
